@@ -515,10 +515,10 @@ class AVDriver:
                         current_deviation = compass_value[segmented_planning[segment_index]["deviation_check_index"]]
                         if abs(current_deviation) >= 0.1:
                             self.set_steering_angle(current_deviation)
-                            print(f"Performing deviation correction as per {segment_index} planner by {current_deviation} radians")
+                            # print(f"Performing deviation correction as per {segment_index} planner by {current_deviation} radians")
                         else:
                             self.set_steering_angle(math.radians(segmented_planning[segment_index]["steering_angle"]))
-                            print(f"Performing deviation correction as per {segment_index} planner by {math.radians(segmented_planning[segment_index]['steering_angle'])} radians")
+                            # print(f"Performing deviation correction as per {segment_index} planner by {math.radians(segmented_planning[segment_index]['steering_angle'])} radians")
                     else:
                         self.set_steering_angle(math.radians(segmented_planning[segment_index]["steering_angle"]))
 
