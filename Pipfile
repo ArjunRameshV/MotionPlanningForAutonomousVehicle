@@ -1,0 +1,40 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+certifi = "==2024.2.2"
+configparser = "==6.0.0"
+contourpy = "==1.2.0"
+cycler = "==0.12.1"
+fonttools = "==4.49.0"
+geographiclib = "==2.0"
+geopy = "==2.4.1"
+kiwisolver = "==1.4.5"
+lxml = "==5.1.0"
+matplotlib = "==3.8.3"
+numpy = "==1.26.4"
+packaging = "==23.2"
+pandas = "==2.2.1"
+pillow = "==10.2.0"
+polars = "==0.20.16"
+pyparsing = "==3.1.1"
+pyproj = "==3.6.1"
+python-dateutil = "==2.9.0.post0"
+pytz = "==2024.1"
+rtree = "==1.2.0"
+ruff = "==0.3.4"
+scipy = "==1.12.0"
+shapely = "==2.0.3"
+six = "==1.16.0"
+sumolib = "==1.19.0"
+traci = "==1.19.0"
+tzdata = "==2024.1"
+webcolors = "==1.13"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.6"
