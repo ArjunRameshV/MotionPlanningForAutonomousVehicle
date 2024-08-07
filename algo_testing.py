@@ -10,7 +10,7 @@ import operator
 import math
 import heapq
 
-from updated_search import HybridAStarSearch
+from algo.a_star import HybridAStarSearch
 from sample_search import RRT
 
 def convert_to_grid_coordinates(i, j):
