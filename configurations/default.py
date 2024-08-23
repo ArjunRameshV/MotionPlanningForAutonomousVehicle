@@ -24,19 +24,19 @@ CONFIG = {
     # Sensor settings
     "sensors": {
         "gps":  {
-            "enabled": False,
+            "enabled": True,
         },
         "camera": {
-            "enabled": False,
+            "enabled": True,
         },
         "gyro": {
-            "enabled": False,
+            "enabled": True,
         },
         "compass": {
-            "enabled": False,
+            "enabled": True,
         },
         "display": {
-            "enabled": False,
+            "enabled": True,
         },
         "sick_lms": {
             "enabled": False,

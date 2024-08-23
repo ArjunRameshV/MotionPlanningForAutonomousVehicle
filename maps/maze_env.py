@@ -1,5 +1,5 @@
 import copy
-import custom_maze_maps
+import maps.custom_maze_maps as custom_maze_maps
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np

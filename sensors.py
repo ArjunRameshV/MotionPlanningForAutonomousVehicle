@@ -28,6 +28,7 @@ class SensorsMixin:
 
     def configure_gps(self):
         if self.config["sensors"]["gps"]["enabled"]:
+            print("configured gps")
             self.gps = self.getDevice("gps")
             self.gps.enable(self.config["sensors"]["gps"].get("sampling_period", self.default_sampling_period))
         else:

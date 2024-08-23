@@ -8,3 +8,12 @@ def gps_to_cartesian(gps_coords):
     y = R * np.cos(lat) * np.sin(lon)
     z = R *np.sin(lat)
     return (x,y,z)
+
+def update_gps_readings(gps_sensor):
+    coords = gps_sensor.getValues()
+    speed_ms = gps_sensor.getSpeed()
+    
+    gps_speed = speed_ms * 3.6  # convert from m/s to km/h
+    gps_coords = coords[:]
+
+    return (gps_speed, gps_coords)
