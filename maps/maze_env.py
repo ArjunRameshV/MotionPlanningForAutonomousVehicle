@@ -1,11 +1,11 @@
 import copy
-import custom_maze_maps
+import maps.custom_maze_maps as custom_maze_maps
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
 import math
-from utils import convert_to_grid_coordinates, convert_to_list_coordinates
+from algo.utils import convert_to_grid_coordinates, convert_to_list_coordinates
 
 #Flag to enable plots
 enable_plots  = False

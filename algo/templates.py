@@ -1,48 +1,15 @@
-import operator
-import math
-import heapq
-
-def convert_to_grid_coordinates(i, j, *args):
-    x = j * 5 + 2.5  # x-coordinate at the center of the cell
-    y = -i * 5 - 2.5   # y-coordinate at the center of the cell
-    return (x,y)
-
-def convert_to_list_coordinates(x, y, *args):
-    i = int(y/-5)
-    j = int(x/5)
-    return (i, j)
-
-class StateActionCost:
-    def __init__(self, state, action, cost, heuristic=0):
-        self.state = tuple(state)
-        self.action = action
-        self.cost = cost
-        self.heuristic = heuristic
-
-    def __lt__(self, obj):
-        return (self.cost + self.heuristic) < (obj.cost + obj.heuristic)
-    
-    def __iter__(self):
-        yield self.state
-        yield self.action
-        yield self.cost
-        yield self.heuristic
 
 
 class SearchAlgorithmTemplate:
-    def __init__(self, env):
+    def __init__(self, env, *args, **kwargs):
         self.env = env 
-        self.setup()
+        self.setup(*args, **kwargs)
         
-    def setup(self):
-        self.start_state_val = tuple(self.env.getStartState())
-        self.goal_state_val = tuple(self.env.getGoalState())
-
-        self.start_grid_val = convert_to_grid_coordinates(*self.start_state_val)
-        self.goal_grid_val = convert_to_grid_coordinates(*self.goal_state_val)
-
-        self.start_state = StateActionCost((*self.start_grid_val, self.start_state_val[-1]), [], 0, self.compute_heuristic((*self.start_grid_val, self.start_state_val[-1])))
-        self.goal_state = StateActionCost((*self.goal_grid_val, self.goal_state_val[-1]), [], 0, self.compute_heuristic((*self.goal_grid_val, self.goal_state_val[-1])))
+    def setup(self, *args, **kwargs):
+        '''
+        Setting up the algorithm variables based on the map and computation logic 
+        '''
+        pass
         
     def compute_heuristic(self, state):
         return 0
@@ -71,7 +38,7 @@ class SearchAlgorithmTemplate:
         raise NotImplementedError
     
             
-    def add_new_element_into_fringe(self, fringe, state_action_update):
+    def add_new_element_into_fringe(self, fringe, next_state, new_actions, new_cost, new_heuristic):
         '''
         Based on the algorithm, update the fringe
         
@@ -85,13 +52,15 @@ class SearchAlgorithmTemplate:
         raise NotImplementedError
     
     def termination_check(self, state):
-        i, j = convert_to_list_coordinates(state[0], state[1])
-        if i == self.goal_state_val[0] and j == self.goal_state_val[1]:
-            return True
-        
-        return False 
-
-    def search(self):        
+        '''
+        Function to check whether the algorithm should terminate
+        '''
+        raise NotImplementedError
+    
+    def search(self):
+        '''
+        A generic search logic that can be used to implement different search algorithms 
+        '''
         # create a fringe based on the algorithm
         fringe = self.construct_fringe()
         closed_set = set()
@@ -117,8 +86,7 @@ class SearchAlgorithmTemplate:
                     new_cost = cost + step_cost
                     new_heuristic = self.compute_heuristic(next_state)
 
-                    state_action_update = StateActionCost(tuple(next_state), new_actions, new_cost, new_heuristic)
-                    self.add_new_element_into_fringe(fringe, state_action_update)
+                    self.add_new_element_into_fringe(fringe, next_state, new_actions, new_cost, new_heuristic)
                 
         return None  # If no solution found
     

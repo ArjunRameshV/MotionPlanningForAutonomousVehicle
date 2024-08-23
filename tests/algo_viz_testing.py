@@ -1,8 +1,11 @@
+'''
+To execute this script, use 'python -m tests.algo_viz_testing' from the top dir
+'''
+
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
-import custom_maze_maps
 
-import maze_env
+from maps import maze_env
 import numpy as np
 from scipy.interpolate import splprep, splev
 
@@ -10,8 +13,8 @@ import operator
 import math
 import heapq
 
-from updated_search import HybridAStarSearch
-from sample_search import RRT
+from algo.hybrid_a_star import HybridAStarSearch
+# from sample_search import RRT
 
 def convert_to_grid_coordinates(i, j):
     x = j * 5 + 2.5  # x-coordinate at the center of the cell
@@ -123,7 +126,7 @@ def visualize_grid_world(grid_world, start_pos, goal_pos, car_poses=None, headin
     ax.set_title('Grid World')
     plt.show()
 
-current_maze = maze_env.Maze(8)
+current_maze = maze_env.Maze(7)
 start_pos = current_maze.getStartState()  # Start state coordinates
 goal_pos = current_maze.getGoalState()   # Goal state coordinates
 
