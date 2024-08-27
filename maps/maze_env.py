@@ -19,14 +19,14 @@ class Maze:
 
     # [delta_x, delta_y, description]
     four_neighbor_actions = {
-        'l1': 10,
+        'l1': 12,
         's': 0,
-        'r1': -10,
+        'r1': -12,
     }
 
-    v = 12  # Velocity in m/s
+    v = 5.5  # Velocity in m/s
     L = 5  # Car length in meters
-    dt = 0.5  # Time step in seconds
+    dt = 0.8  # Time step in seconds
     
     # Legal moves
 
@@ -91,7 +91,7 @@ class Maze:
         # Update car's position and heading using bicycle model equations
         x_new = round(x + v * np.cos(theta) * dt, 4)
         y_new = round(y + v * np.sin(theta) * dt, 4)
-        theta_new = round(theta + (v * np.tan(np.radians(delta))) / L * dt, 4)
+        theta_new = round(theta + min((v * np.tan(np.radians(delta))) / L * dt, 0.2), 4)
         return x_new, y_new, theta_new
     
     def collision_checker(self, state):
