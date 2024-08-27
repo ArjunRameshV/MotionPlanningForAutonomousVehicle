@@ -20,18 +20,18 @@ class Planner:
         },
         "local_algo_one":{
             0:  None,
-            1:  [-9, -7],
+            1:  [-6, -3],
         },
         "global_curve_one": {
             0: None,
             1: [-66, -63],
         },
         "global_straight_two": {
-            0: [-75, -56],
-            1: [-106, -96],
+            0: [-75, -46],
+            1: [-113, -103],
         },
         "local_algo_two": {
-            0: [-94, -90],
+            0: [-97, -94],
             1: [-93, -88]
         },
         "global_termination": {
@@ -68,7 +68,7 @@ class Planner:
             "compute_algo": False
         },
         "local_algo_two": {
-            "maze": maze_env.Maze(8),
+            "maze": maze_env.Maze(9),
             "speed": 12,
             "compute_algo": True,
             "algo_done": False,
@@ -157,17 +157,13 @@ class Planner:
         return (None, None)
 
     def take_planned_step(self, compass_value):
-        # self.set_speed(self.segmented_planning[self.segment_id]["speed"])
         steering_angle = None
         if "segment_compass_index" in self.segmented_planning[self.segment_id]:
-            # print(f"Performing deviation correction as per {segment_id} planner")
             current_deviation = compass_value[self.segmented_planning[self.segment_id]["segment_compass_index"]]
-            if abs(current_deviation) >= 0.1:
+            if abs(current_deviation) >= 0.2:
                 steering_angle = current_deviation
-                # print(f"Performing deviation correction as per {segment_id} planner by {current_deviation} radians")
             else:
                 steering_angle = math.radians(self.segmented_planning[self.segment_id]["steering_angle"])
-                # print(f"Performing deviation correction as per {segment_id} planner by {math.radians(self.segmented_planning[segment_id]['steering_angle'])} radians")
         else:
             steering_angle = math.radians(self.segmented_planning[self.segment_id]["steering_angle"])
 
@@ -202,14 +198,13 @@ class Planner:
         '''
         if gps_coords is not None:
             x, y , _ = gps_coords
-            print(f"current segment id: {self.segment_id}")
             for waypoint_ind in self.segmented_coordinates:
                 # we iterate over all the stored waypoints segments to determine whether a new waypoint has been reached
                 # this is done by determining whether the current gps coords are within the predetermined gps segments for a waypoint strip
 
-                if self.segment_id and "algo" in self.segment_id and not self.segmented_planning[self.segment_id]["algo_done"]:
-                    # Wait till the algorithm step is done before sampling new instructions
-                    break
+                # if self.segment_id and "algo" in self.segment_id and not self.segmented_planning[self.segment_id]["algo_done"]:
+                #     # Wait till the algorithm step is done before sampling new instructions
+                #     break
                 
                 segment_coordinates_range = self.segmented_coordinates[waypoint_ind]
                 if self.check_waypont_reached(segment_coordinates_range, x, y):
