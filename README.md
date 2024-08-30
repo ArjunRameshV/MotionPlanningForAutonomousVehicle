@@ -14,7 +14,7 @@
 
 ## Demo
 
-[![demo video](https://lh3.googleusercontent.com/d/1qbSZS3Jcnqf9q9oDk3K6Kw-uJFPt_NS9=s220)](https://drive.google.com/file/d/1qbSZS3Jcnqf9q9oDk3K6Kw-uJFPt_NS9/view)
+[![demo video](https://lh3.googleusercontent.com/d/1ot2YdU9SEGdH5RHufWEMdg8iEQiGyXuR)](https://drive.google.com/file/d/1ot2YdU9SEGdH5RHufWEMdg8iEQiGyXuR/view)
 
 *<small>A demo of the vehicle planning and executing a path that avoids the obstacles</small>*
 
