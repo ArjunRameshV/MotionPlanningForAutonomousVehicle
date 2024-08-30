@@ -126,7 +126,7 @@ def visualize_grid_world(grid_world, start_pos, goal_pos, car_poses=None, headin
     ax.set_title('Grid World')
     plt.show()
 
-current_maze = maze_env.Maze(9)
+current_maze = maze_env.Maze(7)
 start_pos = current_maze.getStartState()  # Start state coordinates
 goal_pos = current_maze.getGoalState()   # Goal state coordinates
 

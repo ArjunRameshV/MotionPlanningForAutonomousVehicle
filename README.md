@@ -12,6 +12,12 @@
 * [Webots](https://cyberbotics.com/) is an open source simulation service
 * This project created a new **controller** for webots [city world](https://cyberbotics.com/doc/automobile/city) simulation.
 
+## Demo
+
+[![demo video](https://lh3.googleusercontent.com/d/1qbSZS3Jcnqf9q9oDk3K6Kw-uJFPt_NS9=s220)](https://drive.google.com/file/d/1qbSZS3Jcnqf9q9oDk3K6Kw-uJFPt_NS9/view)
+
+*<small>A demo of the vehicle planning and executing a path that avoids the obstacles</small>*
+
 ## Architecture
 
 The architecture consists of two planners, a global and local planner.
@@ -45,7 +51,7 @@ The architecture consists of two planners, a global and local planner.
 
 * The heuristics used ignores obstacles and takes into account the non-holonomic nature of the car, by considering the distance between $(x_t, y_t, \theta_t)$ and $(x_g, y_g, \theta_g)$
 
-* We used the Euclidean distance between the current state and the goal state to find the heuristics. A small penalty was also introduced to the angular distance and $\beta=0.5$:
+* Euclidean distance between the current state and the goal state is used to find the heuristics. A small penalty was also introduced to the angular distance and $\beta=0.5$:
 <div align="center">
 
 $$
@@ -67,3 +73,14 @@ $$
 $$
 
 </div>
+
+<br>
+<div align="center">
+
+  <img src="doc/hybrid_astar_viz.png" alt="Graphical comparison of search algorithms" width="25%">
+
+  <p><em>Figure: A visualisation of the planned path</em></p>
+  <p><em>A downsampled path representing road segment is constructed for motion planning.<br>Necessary interpolations are done when generating the desired output steering angle provided to the simulation vehicle.</em></p>
+
+</div>
+<br>
