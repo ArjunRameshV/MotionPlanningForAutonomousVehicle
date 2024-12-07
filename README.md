@@ -4,7 +4,7 @@
 
 * The objective of this project is create motion planning simulation for a car using Webots simulator.
 * A sample hybrid planner, which consists a global and local planner, is implemented to drive the vehicle autonomously in the pre-existing environment.
-* This project does not make attempts on mapping the environemnt and the focus is purely on motion planning
+* This project does not make attempts on mapping the environment and the focus is purely on motion planning
 * More details about the architecture can be found here 
 
 ## Simulation
